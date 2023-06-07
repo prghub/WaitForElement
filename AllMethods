@@ -1,0 +1,15 @@
+        public IWebElement WaitForElement(IWebElement element)
+        {
+            WebDriverWait wait = new WebDriverWait(_webDriver, TimeSpan.FromSeconds(20));
+            return wait.Until(mydriver => {
+                return element.Displayed ? element : null;
+            });
+        }
+        
+        public IWebElement WaitForFirst()
+        {
+            return WaitForElement(_notifierFirst);
+        }
+        
+        
+        Page<MultipleSKUNotifier>().WaitForFirst();
